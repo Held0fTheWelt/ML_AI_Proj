@@ -3,15 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "SynapseInformation.generated.h"
+#include "NNSynapseInformation.generated.h"
 
 USTRUCT(BlueprintType)
-struct ARTIFICIALINTELLIGENCE_API FSynapseInformation
+struct ARTIFICIALINTELLIGENCE_API FNNSynapseInformation
 {
 	GENERATED_BODY()
 
 public:
-	FSynapseInformation();
+	FNNSynapseInformation();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

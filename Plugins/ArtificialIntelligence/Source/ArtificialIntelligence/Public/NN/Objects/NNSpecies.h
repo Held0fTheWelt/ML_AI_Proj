@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "Node.generated.h"
+#include "NNSpecies.generated.h"
+
 /**
- *
+ * 
  */
 UCLASS()
-class ARTIFICIALINTELLIGENCE_API UNode : public UObject
+class ARTIFICIALINTELLIGENCE_API UNNSpecies : public UObject
 {
 	GENERATED_BODY()
-
+	
 };

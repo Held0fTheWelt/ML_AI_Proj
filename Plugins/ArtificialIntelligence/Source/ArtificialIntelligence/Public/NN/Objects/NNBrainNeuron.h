@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
-#include "Brain.generated.h"
+#include "NN/Objects/NNBrainNode.h"
+#include "NNBrainNeuron.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ARTIFICIALINTELLIGENCE_API UBrain : public UObject
+class ARTIFICIALINTELLIGENCE_API UNNBrainNeuron : public UNNBrainNode
 {
 	GENERATED_BODY()
 	

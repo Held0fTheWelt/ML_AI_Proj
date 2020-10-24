@@ -3,16 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "NN/Structs/SynapseInformation.h"
-#include "SpeciesInformation.generated.h"
+#include "NN/Structs/NNSynapseInformation.h"
+#include "NNSpeciesInformation.generated.h"
 
 USTRUCT(BlueprintType)
-struct ARTIFICIALINTELLIGENCE_API FSpeciesInformation
+struct ARTIFICIALINTELLIGENCE_API FNNSpeciesInformation
 {
 	GENERATED_BODY()
 
 public:
-	FSpeciesInformation();
+	FNNSpeciesInformation();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -28,6 +28,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float NeuronBiases;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<FSynapseInformation> Synapses;
+	TArray<FNNSynapseInformation> Synapses;
 
 };

@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "NN/Structs/SpeciesInformation.h"
+#include "NN/Structs/NNSpeciesInformation.h"
 
-FSpeciesInformation::FSpeciesInformation()
+FNNSpeciesInformation::FNNSpeciesInformation()
 {
 	GenerationBorn = 0;
 	Number = 0;
@@ -11,5 +11,5 @@ FSpeciesInformation::FSpeciesInformation()
 	bStale = false;
 	UnderperformingForGeneration = 0;
 	NeuronBiases = 0.f;
-	Synapses = TArray<FSynapseInformation>();
+	Synapses = TArray<FNNSynapseInformation>();
 }

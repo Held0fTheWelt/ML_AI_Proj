@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "NN/Structs/SynapseInformation.h"
+#include "NN/Structs/NNSynapseInformation.h"
 
-FSynapseInformation::FSynapseInformation()
+FNNSynapseInformation::FNNSynapseInformation()
 {
 	SourceIndex = 0;
 	TargetIndex = 0;

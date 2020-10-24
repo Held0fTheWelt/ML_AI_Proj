@@ -3,16 +3,16 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "NN/Structs/SpeciesInformation.h"
-#include "PopulationInformation.generated.h"
+#include "NN/Structs/NNSpeciesInformation.h"
+#include "NNPopulationInformation.generated.h"
 
 USTRUCT(BlueprintType)
-struct ARTIFICIALINTELLIGENCE_API FPopulationInformation
+struct ARTIFICIALINTELLIGENCE_API FNNPopulationInformation
 {
 	GENERATED_BODY()
 
 public:
-	FPopulationInformation();
+	FNNPopulationInformation();
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -24,7 +24,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float FitnessOverTime;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TArray<FSpeciesInformation> Species;
+	TArray<FNNSpeciesInformation> Species;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float SynapseMutationChange;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
