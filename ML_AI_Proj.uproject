@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.25",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "ML_AI_Proj",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
