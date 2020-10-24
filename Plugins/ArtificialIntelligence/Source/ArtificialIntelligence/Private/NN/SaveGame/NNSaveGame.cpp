@@ -3,3 +3,7 @@
 
 #include "NN/SaveGame/NNSaveGame.h"
 
+UNNSaveGame::UNNSaveGame()
+{
+
+}
