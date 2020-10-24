@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+/* Copyright (C) 2020 Yves Tanas - All Rights Reserved */
 
 #pragma once
 
@@ -13,4 +13,6 @@ class ARTIFICIALINTELLIGENCE_API UNNBrainNode : public UObject
 {
 	GENERATED_BODY()
 
+public:
+	UNNBrainNode();
 };
