@@ -3,13 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-
+#include "UObject/NoExportTypes.h"
+#include "Node.generated.h"
 /**
- * 
+ *
  */
-class ARTIFICIALINTELLIGENCE_API Node
+UCLASS()
+class ARTIFICIALINTELLIGENCE_API UNode : public UObject
 {
-public:
-	Node();
-	~Node();
+	GENERATED_BODY()
+
 };

@@ -3,10 +3,3 @@
 
 #include "NN/Objects/Node.h"
 
-Node::Node()
-{
-}
-
-Node::~Node()
-{
-}
