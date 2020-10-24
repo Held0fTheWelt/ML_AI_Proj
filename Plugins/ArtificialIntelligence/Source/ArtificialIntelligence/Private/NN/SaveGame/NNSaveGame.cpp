@@ -5,5 +5,15 @@
 
 UNNSaveGame::UNNSaveGame()
 {
+	Save.AddDynamic(this, &UNNSaveGame::ProcessPopulation);
+	Load.AddDynamic(this, &UNNSaveGame::RestorePopulation);
+}
 
+void UNNSaveGame::ProcessPopulation(UNNPopulation* CurrentPopulation)
+{
+	Population = CurrentPopulation;
+}
+
+void UNNSaveGame::RestorePopulation()
+{
 }

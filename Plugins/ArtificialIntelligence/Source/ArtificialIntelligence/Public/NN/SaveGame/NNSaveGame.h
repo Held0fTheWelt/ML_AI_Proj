@@ -8,6 +8,9 @@
 #include "NN/Structs/NNPopulationInformation.h"
 #include "NNSaveGame.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSave, UNNPopulation*, Population);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FLoad);
+
 /**
  * 
  */
@@ -20,7 +23,15 @@ public:
 	UNNSaveGame();
 
 public:
-	UNNPopulation Population;
+	FSave Save;
+	FLoad Load;
+
+private:
+	void ProcessPopulation(UNNPopulation* Population);
+	void RestorePopulation();
+
+public:
+	UNNPopulation* Population;
 
 	FNNPopulationInformation PopulationInformation;
 };
