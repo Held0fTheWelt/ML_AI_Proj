@@ -26,6 +26,20 @@ public:
 
 	FFireEvents Fire;
 
+	UPROPERTY(VisibleAnywhere)
 	TArray<int32> NeuronCounts;
+	UPROPERTY(VisibleAnywhere)
 	TArray<class UNNBrainNode*> Neurons;
+
+	void ReDoOnce();
+public:
+	int32 CountNeuronsInLayers(int32 StartLayer, int32 EndLayer);
+	TArray<class UNNBrainNode*> GetInputs();
+
+private:
+	void SetupBrainValues();
+	void FireNeuronEvents();
+
+private:
+	bool bDoOnce;
 };

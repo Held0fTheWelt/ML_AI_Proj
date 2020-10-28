@@ -4,6 +4,7 @@
 #include "NN/Objects/NNSpecies.h"
 #include "Engine/World.h"
 #include "NN/Objects/NNBrain.h"
+#include "NN/Objects/NNBrainNode.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 UNNSpecies::UNNSpecies()
@@ -78,7 +79,10 @@ void UNNSpecies::SetupSpeciesInputs(TArray<float> Inputs)
 		return;
 	}
 
-
+	for (int32 i = 0; i < NeuronCounts.Num(); i++)
+	{
+		Brain->Neurons[i]->Value = NeuronCounts[i];
+	}
 
 
 	if (Brain->Fire.IsBound())
