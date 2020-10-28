@@ -41,7 +41,9 @@ public:
 	TArray<class UNNBrainNode*> GetInputs();
 
 private:
+	UFUNCTION()
 	void SetupBrainValues();
+	UFUNCTION()
 	void FireNeuronEvents();
 
 private:

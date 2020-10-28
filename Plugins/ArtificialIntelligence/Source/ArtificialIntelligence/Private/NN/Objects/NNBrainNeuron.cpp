@@ -10,7 +10,9 @@ UNNBrainNeuron::UNNBrainNeuron()
 {
 	Bias = 0.f;
 	Synapses = TArray<UNNSynapse*>();
-	Activate.AddDynamic(this, &UNNBrainNeuron::PerformActivate);
+
+	if(!Activate.IsBound())
+		Activate.AddDynamic(this, &UNNBrainNeuron::PerformActivate);
 }
 
 void UNNBrainNeuron::PerformActivate()
@@ -27,7 +29,7 @@ void UNNBrainNeuron::PerformActivate()
 	Value = Sigmoid(Value);
 }
 
-float UNNBrainNeuron::Sigmoid(float In)
+float UNNBrainNeuron::Sigmoid(float In = 0.f)
 {
 	In *= -1;
 

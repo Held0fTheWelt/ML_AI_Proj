@@ -8,8 +8,10 @@
 
 UNNSimpleSaveGame::UNNSimpleSaveGame()
 {
-	Save.AddDynamic(this, &UNNSimpleSaveGame::ProcessPopulation);
-	Load.AddDynamic(this, &UNNSimpleSaveGame::RestorePopulation);
+	if(!Save.IsBound())
+		Save.AddDynamic(this, &UNNSimpleSaveGame::ProcessPopulation);
+	if(!Load.IsBound())
+		Load.AddDynamic(this, &UNNSimpleSaveGame::RestorePopulation);
 }
 
 void UNNSimpleSaveGame::ProcessPopulation(UNNPopulation* CurrentPopulation)

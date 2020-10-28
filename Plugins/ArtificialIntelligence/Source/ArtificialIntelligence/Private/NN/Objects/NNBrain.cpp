@@ -13,8 +13,11 @@ UNNBrain::UNNBrain()
 	NeuronCounts = TArray<int32>();
 	Neurons = TArray<UNNBrainNode*>();
 
-	SetupBrain.AddDynamic(this, &UNNBrain::SetupBrainValues);
-	Fire.AddDynamic(this, &UNNBrain::FireNeuronEvents);
+	if(!SetupBrain.IsBound())
+		SetupBrain.AddDynamic(this, &UNNBrain::SetupBrainValues);
+
+	if(!Fire.IsBound())
+		Fire.AddDynamic(this, &UNNBrain::FireNeuronEvents);
 
 	bDoOnce = true;
 }

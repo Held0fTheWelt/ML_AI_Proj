@@ -28,7 +28,9 @@ public:
 	float Bias;
 
 private:
+	UFUNCTION()
 	void PerformActivate();
 
+	UFUNCTION()
 	float Sigmoid(float In);
 };

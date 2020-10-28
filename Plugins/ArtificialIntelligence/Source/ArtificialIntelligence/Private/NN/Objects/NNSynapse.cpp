@@ -9,8 +9,10 @@
 
 UNNSynapse::UNNSynapse()
 {
-	SetupSynapse.AddDynamic(this, &UNNSynapse::SetSynapseValues);
 	DoOnce = true;
+
+	if(!SetupSynapse.IsBound())
+		SetupSynapse.AddDynamic(this, &UNNSynapse::SetSynapseValues);
 }
 
 void UNNSynapse::ReDoOnce()

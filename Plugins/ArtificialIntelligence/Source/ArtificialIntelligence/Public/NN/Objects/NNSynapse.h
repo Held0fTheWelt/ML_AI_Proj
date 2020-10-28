@@ -39,6 +39,7 @@ public:
 	bool DoOnce;
 
 private:
-	void SetSynapseValues(class UNNBrainNode* Source, class UNNBrainNode* Target);
+	UFUNCTION()
+	void SetSynapseValues(class UNNBrainNode* NewSource, class UNNBrainNode* NewTarget);
 
 };

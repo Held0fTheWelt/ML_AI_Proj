@@ -49,8 +49,10 @@ protected:
 	float UnderperformingForGenerations;
 
 private:
+	UFUNCTION()
 	void EndSpeciesRun();
+	UFUNCTION()
 	void SetupSpeciesValues();
-
+	UFUNCTION()
 	void SetupSpeciesInputs(TArray<float> Inputs);
 };

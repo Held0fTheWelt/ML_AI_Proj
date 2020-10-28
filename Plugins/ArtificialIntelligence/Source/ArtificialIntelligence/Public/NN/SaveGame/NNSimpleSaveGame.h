@@ -27,7 +27,9 @@ public:
 	FLoad Load;
 
 private:
+	UFUNCTION()
 	void ProcessPopulation(UNNPopulation* Population);
+	UFUNCTION()
 	void RestorePopulation();
 
 public:

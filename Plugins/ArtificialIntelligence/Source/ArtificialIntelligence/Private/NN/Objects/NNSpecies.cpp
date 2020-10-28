@@ -21,9 +21,12 @@ UNNSpecies::UNNSpecies()
 	
 	bStale = false;
 	
-	EndRun.AddDynamic(this, &UNNSpecies::EndSpeciesRun);
-	SetupSpecies.AddDynamic(this, &UNNSpecies::SetupSpeciesValues);
-	SetInputs.AddDynamic(this, &UNNSpecies::SetupSpeciesInputs);
+	if(!EndRun.IsBound())
+		EndRun.AddDynamic(this, &UNNSpecies::EndSpeciesRun);
+	if(!SetupSpecies.IsBound())
+		SetupSpecies.AddDynamic(this, &UNNSpecies::SetupSpeciesValues);
+	if(!SetInputs.IsBound())
+		SetInputs.AddDynamic(this, &UNNSpecies::SetupSpeciesInputs);
 }
 
 TArray<class UNNBrainNeuron*> UNNSpecies::GetOutputs() const

@@ -6,6 +6,11 @@
 #include "UObject/NoExportTypes.h"
 #include "NNPopulation.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FPopulate);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FPopulationChanged);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FNextGeneration);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMakeNewSpecies, int32, n);
+
 /**
  * 
  */
@@ -16,6 +21,11 @@ class ARTIFICIALINTELLIGENCE_API UNNPopulation : public UObject
 	
 public:
 	UNNPopulation();
+
+	FPopulate Populate;
+	FNextGeneration NextGeneration;
+	FMakeNewSpecies CreateNewSpecies;
+	FPopulationChanged PopulationChanged;
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
@@ -36,4 +46,25 @@ public:
 	float PerturbChance;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
 	float MutationStep;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void Selection(int32 KillCount, bool ElitistSelection);
+	UFUNCTION(BlueprintCallable)
+	void Crossover(int32 Offspring);
+	UFUNCTION(BlueprintCallable)
+	void Mutation(class UNNSpecies* Specie);
+	UFUNCTION(BlueprintCallable)
+	float AverageFitness();
+
+private:
+	UFUNCTION()
+	void MutateAllSynapses(class UNNBrainNeuron* BrainNeuron);
+	UFUNCTION()
+	void PopulateSpecies();
+	UFUNCTION()
+	void MakeNextGeneration();
+	UFUNCTION()
+	void CreateANewSpecie(int32 n);
+
 };
