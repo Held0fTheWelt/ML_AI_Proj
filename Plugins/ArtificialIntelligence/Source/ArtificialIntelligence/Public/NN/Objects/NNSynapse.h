@@ -22,18 +22,20 @@ public:
 
 	FSetupSynapse SetupSynapse;
 
+	UFUNCTION(BlueprintCallable)
 	void ReDoOnce();
 
+	UFUNCTION(BlueprintCallable)
 	float GetWeightedValue();
 
 public:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UNNBrainNode* Source;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	class UNNBrainNode* Target;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Weight;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool DoOnce;
 
 private:

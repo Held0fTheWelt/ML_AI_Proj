@@ -79,7 +79,7 @@ void UNNSpecies::SetupSpeciesInputs(TArray<float> Inputs)
 		return;
 	}
 
-	for (int32 i = 0; i < NeuronCounts.Num(); i++)
+	for (int32 i = 0; i < NeuronCounts[0] - 1; i++)
 	{
 		Brain->Neurons[i]->Value = NeuronCounts[i];
 	}

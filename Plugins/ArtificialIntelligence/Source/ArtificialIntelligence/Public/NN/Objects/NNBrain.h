@@ -20,20 +20,24 @@ class ARTIFICIALINTELLIGENCE_API UNNBrain : public UObject
 public:
 	UNNBrain();
 	
+	UFUNCTION(BlueprintCallable)
 	TArray<class UNNBrainNeuron*> GetOutputs() const;
 
 	FSetupBrain SetupBrain;
 
 	FFireEvents Fire;
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
 	TArray<int32> NeuronCounts;
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<class UNNBrainNode*> Neurons;
 
+	UFUNCTION(BlueprintCallable)
 	void ReDoOnce();
 public:
+	UFUNCTION(BlueprintCallable)
 	int32 CountNeuronsInLayers(int32 StartLayer, int32 EndLayer);
+	UFUNCTION(BlueprintCallable)
 	TArray<class UNNBrainNode*> GetInputs();
 
 private:

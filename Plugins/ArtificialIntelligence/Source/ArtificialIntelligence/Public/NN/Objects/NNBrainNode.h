@@ -17,5 +17,6 @@ public:
 	UNNBrainNode();
 
 public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Value;
 };

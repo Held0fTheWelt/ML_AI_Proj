@@ -16,4 +16,24 @@ class ARTIFICIALINTELLIGENCE_API UNNPopulation : public UObject
 	
 public:
 	UNNPopulation();
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<class UNNSpecies*> Species;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int32 Generation;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
+	int32 NumberOfSpecies;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
+	TArray<int32> NeuronCounts;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<float> FitnessOverTime;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
+	float SynapseMutationChance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
+	float NeuronMutationChance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
+	float PerturbChance;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Meta = (ExposeOnSpawn = "true"))
+	float MutationStep;
 };

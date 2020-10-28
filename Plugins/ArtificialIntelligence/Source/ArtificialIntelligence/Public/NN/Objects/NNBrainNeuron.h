@@ -21,8 +21,10 @@ public:
 	
 	FActivate Activate;
 
-protected:
+public:
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TArray<class UNNSynapse*> Synapses;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	float Bias;
 
 private:

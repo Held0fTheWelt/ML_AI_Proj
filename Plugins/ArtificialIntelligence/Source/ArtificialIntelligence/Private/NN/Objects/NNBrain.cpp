@@ -6,6 +6,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "NN/Objects/NNBrainNode.h"
 #include "NN/Objects/NNBrainNeuron.h"
+#include "NN/Objects/NNSynapse.h"
 
 UNNBrain::UNNBrain()
 {
@@ -20,7 +21,26 @@ UNNBrain::UNNBrain()
 
 TArray<class UNNBrainNeuron*> UNNBrain::GetOutputs() const
 {
-	return TArray<class UNNBrainNeuron*>();
+	TArray<class UNNBrainNeuron*> Outputs = TArray<class UNNBrainNeuron*>();
+
+	int32 StartIndex = Neurons.Num() - NeuronCounts[NeuronCounts.Num() - 1];
+	int32 EndIndex = Neurons.Num() - 1;
+
+	for (int32 i = StartIndex; i < EndIndex; i++)
+	{
+		UNNBrainNeuron* BrainNeuron = Cast<UNNBrainNeuron>(Neurons[i]);
+
+		if (BrainNeuron == nullptr)
+		{
+
+		}
+		else
+		{
+			Outputs.Add(BrainNeuron);
+		}
+	}
+
+	return Outputs;
 }
 
 void UNNBrain::ReDoOnce()
@@ -30,12 +50,26 @@ void UNNBrain::ReDoOnce()
 
 int32 UNNBrain::CountNeuronsInLayers(int32 StartLayer, int32 EndLayer)
 {
-	return int32();
+	int32 NeuronCount = 0;
+	// Watch this ! 
+	for (int32 i = StartLayer; i <= EndLayer; i++)
+	{
+		NeuronCount += NeuronCounts[i];
+	}
+
+	return NeuronCount;
 }
 
 TArray<class UNNBrainNode*> UNNBrain::GetInputs()
 {
-	return TArray<class UNNBrainNode*>();
+	TArray<class UNNBrainNode*> Inputs = TArray<class UNNBrainNode*>();
+
+	for (int32 i = 0; i < NeuronCounts[0] - 1; i++)
+	{
+		Inputs.Add(Neurons[i]);
+	}
+
+	return Inputs;
 }
 
 void UNNBrain::SetupBrainValues()
@@ -81,6 +115,29 @@ void UNNBrain::SetupBrainValues()
 					Neurons.Add(BrainNeuron);
 
 					int32 Count = CountNeuronsInLayers(0, i - 1);
+
+					for (int32 k = Count - NeuronCounts[i - 1]; k < Count - 1; k++)
+					{
+						UNNSynapse* BrainSynapse = NewObject<UNNSynapse>(UNNSynapse::StaticClass());
+
+						if (BrainSynapse == nullptr)
+						{
+							UKismetSystemLibrary::PrintString(GetWorld(), "BrainSynapse could not be created by Brain !", true, true, FLinearColor::Red, 0.f);
+						}
+						else
+						{
+							if (BrainSynapse->SetupSynapse.IsBound())
+							{
+								BrainSynapse->SetupSynapse.Broadcast(Neurons[k], BrainNeuron);
+
+								BrainNeuron->Synapses.Add(BrainSynapse);
+							}
+							else
+							{
+								UKismetSystemLibrary::PrintString(GetWorld(), "BrainSynapse could not be setup, because Event is not bound!", true, true, FLinearColor::Red, 0.f);
+							}
+						}
+					}
 				}
 			}
 		}
@@ -89,4 +146,30 @@ void UNNBrain::SetupBrainValues()
 
 void UNNBrain::FireNeuronEvents()
 {
+	if (Neurons.Num() == 0)
+	{
+		UKismetSystemLibrary::PrintString(GetWorld(), "Brain has no neurons to activate!", true, true, FLinearColor::Red, 0.f);
+		return;
+	}
+
+	for (int32 i = 0; i < Neurons.Num(); i++)
+	{
+		UNNBrainNeuron* BrainNeuron = Cast<UNNBrainNeuron>(Neurons[i]);
+
+		if (BrainNeuron == nullptr)
+		{
+
+		}
+		else
+		{
+			if (BrainNeuron->Activate.IsBound())
+			{
+				BrainNeuron->Activate.Broadcast();
+			}
+			else
+			{
+				UKismetSystemLibrary::PrintString(GetWorld(), "Neuron could not activate, because event is not bound!", true, true, FLinearColor::Red, 0.f);
+			}
+		}
+	}
 }
