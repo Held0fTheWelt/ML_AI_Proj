@@ -5,5 +5,5 @@
 
 UNNBrainNode::UNNBrainNode()
 {
-
+	Value = 0.f;
 }

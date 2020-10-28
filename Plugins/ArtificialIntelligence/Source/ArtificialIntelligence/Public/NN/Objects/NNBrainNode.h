@@ -15,4 +15,7 @@ class ARTIFICIALINTELLIGENCE_API UNNBrainNode : public UObject
 
 public:
 	UNNBrainNode();
+
+public:
+	float Value;
 };

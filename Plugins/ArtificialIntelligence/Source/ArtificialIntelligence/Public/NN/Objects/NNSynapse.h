@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
+
 #include "NNSynapse.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FSetupSynapse, class UNNBrainNode*, Source, class UNNBrainNode*, Target);
 
 /**
  * 
@@ -16,4 +19,24 @@ class ARTIFICIALINTELLIGENCE_API UNNSynapse : public UObject
 	
 public:
 	UNNSynapse();
+
+	FSetupSynapse SetupSynapse;
+
+	void ReDoOnce();
+
+	float GetWeightedValue();
+
+public:
+	UPROPERTY(VisibleAnywhere)
+	class UNNBrainNode* Source;
+	UPROPERTY(VisibleAnywhere)
+	class UNNBrainNode* Target;
+	UPROPERTY(VisibleAnywhere)
+	float Weight;
+	UPROPERTY(VisibleAnywhere)
+	bool DoOnce;
+
+private:
+	void SetSynapseValues(class UNNBrainNode* Source, class UNNBrainNode* Target);
+
 };

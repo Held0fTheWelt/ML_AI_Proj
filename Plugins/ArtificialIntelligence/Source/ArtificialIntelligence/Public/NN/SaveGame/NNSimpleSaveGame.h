@@ -6,7 +6,7 @@
 #include "GameFramework/SaveGame.h"
 #include "NN/Objects/NNPopulation.h"
 #include "NN/Structs/NNPopulationInformation.h"
-#include "NNSaveGame.generated.h"
+#include "NNSimpleSaveGame.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FSave, UNNPopulation*, Population);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FLoad);
@@ -15,12 +15,12 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FLoad);
  * 
  */
 UCLASS()
-class ARTIFICIALINTELLIGENCE_API UNNSaveGame : public USaveGame
+class ARTIFICIALINTELLIGENCE_API UNNSimpleSaveGame : public USaveGame
 {
 	GENERATED_BODY()
 	
 public:
-	UNNSaveGame();
+	UNNSimpleSaveGame();
 
 public:
 	FSave Save;
@@ -31,7 +31,9 @@ private:
 	void RestorePopulation();
 
 public:
+	UPROPERTY(VisibleAnywhere)
 	UNNPopulation* Population;
 
+	UPROPERTY(VisibleAnywhere)
 	FNNPopulationInformation PopulationInformation;
 };
