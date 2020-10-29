@@ -61,10 +61,17 @@ private:
 	UFUNCTION()
 	void MutateAllSynapses(class UNNBrainNeuron* BrainNeuron);
 	UFUNCTION()
+	void MutateAllBiases(UNNBrainNeuron* BrainNeuron);
+	UFUNCTION()
 	void PopulateSpecies();
 	UFUNCTION()
 	void MakeNextGeneration();
 	UFUNCTION()
 	void CreateANewSpecie(int32 n);
-
+	UFUNCTION()
+	void Quicksort(TArray<float> &a, int32 low, int32 high);
+	UFUNCTION()
+	void Partition(TArray<float> &a, int32 low, int32 high, float&i, float&j);
+	
+	void Swap(float* a, float* b);
 };
